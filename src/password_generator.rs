@@ -25,6 +25,7 @@ pub fn password_generator(){
 
 fn get_password_length()->Result<usize,String>{
     let mut length=String::new();
+    println!("Enter Password length");
     io::stdin()
         .read_line(&mut length)
         .expect("Reading line Failed");
