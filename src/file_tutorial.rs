@@ -23,14 +23,15 @@ pub fn read_file(){
     println!("{}",content);
 }
 
-pub fn append_to_file(){
+pub fn append_to_file()->std::io::Result<()>{
 
     let mut file=OpenOptions::new()
         .append(true)
         .create(true)
-        .open("newfile.txt")
-        .expect("Error opening the file");
+        .open("newfile.txt")?;
+        
 
-    file.write_all(b"this is going to be wild").expect("error writing to the file");
+    file.write_all(b"this is going to be wild  \n")?;
+    Ok(())
     
 }

@@ -89,3 +89,4 @@ pub fn read_input()->Result<f64,String>{
         Err(_)=>Err("Invalid User Input".to_string())
     }
 }
+
