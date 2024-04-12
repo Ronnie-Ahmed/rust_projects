@@ -5,6 +5,7 @@ mod todo;
 mod simple_chat;
 use std::io;
 mod file_tutorial;
+mod bank_management;
 
 fn main(){
    println!("......................................................................................");
@@ -26,8 +27,9 @@ fn main(){
       println!("Get Request || press=> 2");
       println!("Password Generator || press=> 3");
       println!("Todo List || press=> 4");
-      println!("Simple_Chat || press =>5");
-      println!("Quit || press=> 6");
+      println!("Simple_Chat || press => 5");
+      println!("Bank_management_system || press => 6");
+      println!("Quit || press=> 7");
       println!("......................................................................................");
       println!("......................................................................................");
 
@@ -61,8 +63,13 @@ fn main(){
          5 => {
             println!("\n\nSimple Chatting Loading......\n\n");
             simple_chat::Simple_Chat();
+         },
+         6=>{
+            println!("\n\n Bank Management System is Loading......\n\n");
+            bank_management::bank_management();
+
          }
-         6 => break,
+         7 => break,
          _ => {
             println!("INvalid choices");
             continue;
