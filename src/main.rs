@@ -7,6 +7,7 @@ use std::io;
 mod file_tutorial;
 mod bank_management;
 mod resulttype;
+mod file_manager;
 
 fn main(){
 
@@ -32,7 +33,8 @@ fn main(){
       println!("Todo List || press=> 4");
       println!("Simple_Chat || press => 5");
       println!("Bank_management_system || press => 6");
-      println!("Quit || press=> 7");
+      println!("File Manager || press 7");
+      println!("Quit || press=> 8");
       println!("......................................................................................");
       println!("......................................................................................");
 
@@ -71,8 +73,13 @@ fn main(){
             println!("\n\n Bank Management System is Loading......\n\n");
             bank_management::bank_management();
 
+         },
+         7=>{
+            println!("\n\n File Manager is Loading......\n\n");
+            file_manager::file_manager()
+
          }
-         7 => break,
+         8 => break,
          _ => {
             println!("INvalid choices");
             continue;
