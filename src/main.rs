@@ -8,6 +8,7 @@ mod file_tutorial;
 mod bank_management;
 mod resulttype;
 mod file_manager;
+mod voter_management_system;
 
 fn main(){
 
@@ -34,7 +35,8 @@ fn main(){
       println!("Simple_Chat || press => 5");
       println!("Bank_management_system || press => 6");
       println!("File Manager || press 7");
-      println!("Quit || press=> 8");
+      println!("Voting System || press 8");
+      println!("Quit || press=> 9");
       println!("......................................................................................");
       println!("......................................................................................");
 
@@ -78,8 +80,13 @@ fn main(){
             println!("\n\n File Manager is Loading......\n\n");
             file_manager::file_manager()
 
+         },
+         8=>{
+            println!("\n\n Voting System is Loading......\n\n");
+            voter_management_system::voting_system()
+
          }
-         8 => break,
+         9 => break,
          _ => {
             println!("INvalid choices");
             continue;
