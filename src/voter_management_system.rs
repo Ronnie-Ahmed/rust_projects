@@ -13,9 +13,6 @@ struct Voter{
 
 impl Voter{
     fn new(name:String,age:u32)->(Self,Digest){
-        if age<18{
-            println!("Age should be greater than 18");
-        }
         assert!(age>=18);
         let data=format!("{}{}",name.clone(),age);
         let hash=digest::digest(&digest::SHA256, data.as_bytes());
@@ -35,6 +32,7 @@ pub fn voting_system(){
         println!("1. Register ");
         println!("2. See your Voter Id ");
         println!("3. Check your Info ");
+        println!("4. Quite");
 
         println!("________________________________________________");
         let mut input=String::new();
@@ -72,24 +70,35 @@ pub fn voting_system(){
                     continue;
                 }
                 let (new_voter,new_voter_id)=Voter::new(name.clone(), age);
-                voter_id.insert(name, new_voter_id);
+                voter_id.insert(name.clone(), new_voter_id);
+
                 let hex_digest = new_voter_id.as_ref()
                 .iter()
                 .map(|byte| format!("{:02x}", byte))
                 .collect::<String>(); 
-                voter_map.insert(hex_digest, new_voter);
+                voter_map.insert(hex_digest.clone(), new_voter);
+                println!("Registered Successfully Done");
             },
             2=>{
                 let mut name=String::new();
                 io::stdout().flush().expect("Error");
                 println!("Enter you Name");
                 io::stdin().read_line(&mut name).expect("Error reading the line");
-                let name=name.trim();
+                // let name=name.trim();
 
-                if let Some(check)=voter_id.get(name){
-                   println!("Voter id for Voter: {} is {:?}",name,check);
-                }else{
-                    println!("Voter not Found");
+                // let check=voter_id.get(&name);
+
+                // if check.is_none(){
+                //     println!("Voter Not Found");
+                //     continue;
+                // }else{
+                //     println!("Voter Id: {:?}",check.unwrap());
+                // }
+                if let Some(val)=voter_id.get(&name){
+                    println!("Voter Id: {:?}",val);
+                }
+                else{
+                    println!("Voter not found");
                     continue;
                 }
 
@@ -100,8 +109,8 @@ pub fn voting_system(){
                 println!("Enter you Voter ID");
                 io::stdout().flush().expect("Error");
                 io::stdin().read_line(&mut id).expect("Error reading the line");
-                let id=id.trim();
-                if let Some(val)=voter_map.get(id){
+                // let id=id.trim();
+                if let Some(val)=voter_map.get(&id){
                     println!("Name: {} age: {} Id: {:?}",val.name,val.age,val.voter_id);
                 }
                 else{
