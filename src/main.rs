@@ -9,6 +9,7 @@ mod bank_management;
 mod resulttype;
 mod file_manager;
 mod voter_management_system;
+mod employee;
 
 fn main(){
 
@@ -36,7 +37,9 @@ fn main(){
       println!("Bank_management_system || press => 6");
       println!("File Manager || press 7");
       println!("Voting System || press 8");
-      println!("Quit || press=> 9");
+      println!("Employee Management System || press 9");
+
+      println!("Quit || press=> 10");
       println!("......................................................................................");
       println!("......................................................................................");
 
@@ -85,8 +88,12 @@ fn main(){
             println!("\n\n Voting System is Loading......\n\n");
             voter_management_system::voting_system()
 
+         },
+         9=>{
+            println!("\n\n Employee Management System....\n\n");
+            employee::employee();
          }
-         9 => break,
+         10 => break,
          _ => {
             println!("INvalid choices");
             continue;
