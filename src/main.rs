@@ -10,6 +10,7 @@ mod resulttype;
 mod file_manager;
 mod voter_management_system;
 mod employee;
+mod inventory;
 
 fn main(){
 
@@ -38,8 +39,10 @@ fn main(){
       println!("File Manager || press 7");
       println!("Voting System || press 8");
       println!("Employee Management System || press 9");
+      println!("Inventory || press 10");
 
-      println!("Quit || press=> 10");
+
+      println!("Quit || press=> 11");
       println!("......................................................................................");
       println!("......................................................................................");
 
@@ -92,8 +95,12 @@ fn main(){
          9=>{
             println!("\n\n Employee Management System....\n\n");
             employee::employee();
+         },
+         10=>{
+            println!("\n\n Inventory Management system \n\n");
+            inventory::inventory();
          }
-         10 => break,
+         11 => break,
          _ => {
             println!("INvalid choices");
             continue;
